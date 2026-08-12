@@ -230,6 +230,7 @@ async function createAsync(
           airState,
           comment,
           lang,
+          deckbuilder.options,
         );
         ctx.drawImage(pimage, fimage.width + 2, aimage.height);
       }
@@ -252,6 +253,7 @@ async function createAsync(
           airState,
           comment,
           lang,
+          deckbuilder.options,
         );
         ctx.drawImage(pimage, fimage.width + 2, aimage.height);
       }

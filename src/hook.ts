@@ -34,6 +34,10 @@ export interface DrawLbEquipTextParams extends BaseSyncDrawParams {
   text: string
 }
 
+export interface DrawCommentParams extends BaseSyncDrawParams {
+  text: string
+}
+
 export interface DrawHooks {
   drawShipImage?: (params: DrawShipImageParams) => Promise<void>
   drawShipHeaderOverlay?: (params: BaseSyncDrawParams) => void
@@ -43,6 +47,7 @@ export interface DrawHooks {
   drawEquipEmpty?: (params: DrawEquipTextParams) => void
   drawEquipSlotNum?: (params: DrawEquipTextParams) => void
   drawLbEquipText?: (params: DrawLbEquipTextParams) => void
+  drawComment?: (params: DrawCommentParams) => void
 }
 
 export function callHook<P extends BaseSyncDrawParams>(

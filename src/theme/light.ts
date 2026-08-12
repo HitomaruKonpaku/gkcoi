@@ -527,7 +527,8 @@ export async function generateLightParameterCanvasAsync(
   ships: Ship[],
   airState: AirState,
   comment: string,
-  lang: Lang = "jp"
+  lang: Lang = "jp",
+  options?: DeckBuilderOptions,
 ): Promise<Canvas> {
   const { canvas, ctx } = createCanvas2D(265, 586);
   ctx.fillStyle = backgroundColor;
@@ -665,7 +666,13 @@ export async function generateLightParameterCanvasAsync(
     },
   });
   ctx.drawImage(aaciCanvases.canvas, -265 * (1 - zoomLevel) * 0.1, 237);
-  fillTextLine(ctx, comment, 12, 430, 250);
+  const drawComment = () => {
+    fillTextLine(ctx, comment, 12, 430, 250);
+  };
+  callHook(
+    options?.drawHooks?.drawComment,
+    { ctx, text: comment, defaultDraw: drawComment },
+  );
   return canvas;
 }
 
